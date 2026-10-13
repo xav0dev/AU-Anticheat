@@ -1,4 +1,4 @@
-# AU-Anticheat — beta 1
+# <img src="assets/au-anticheat-x.svg" width="32" height="36" alt="AU-Anticheat X badge"> AU-Anticheat — beta 1
 
 **By xav0dev - Boo.** A defensive Among Us anti-cheat and lobby-moderation plugin for BepInEx IL2CPP.
 
@@ -20,18 +20,29 @@ Version: **1.0.0-beta.1**. The numeric loader/file version is **0.9.0.1**; that 
 
 The plugin is a Windows build. Checking messages from Android or console players does not make the DLL installable on those devices. Game and BepInEx libraries are not bundled.
 
-## Install or update
+## Installation
 
 1. Close Among Us.
-2. If BepInEx is already installed, run the game with that setup once so it generates its folders and libraries, then close the game again.
-3. Back up your previous anti-cheat DLL **outside** the game's `BepInEx/plugins` folder.
-4. Put `AU-Anticheat.dll` into `BepInEx/plugins` inside your Among Us installation.
-5. Keep only one active AU-Anticheat/xav-anticheat plugin. Do not load Hydra or another overlapping build alongside it.
-6. Preserve `BepInEx/config/com.au.anticheat.cfg` and `BepInEx/config/AU-Anticheat/` if you want to keep existing settings. On first upgrade, the plugin imports the previous `com.xav.anticheat.cfg` if the new file does not exist; it leaves the old file untouched. Do not delete your old configuration before upgrading.
-7. Start the game. Press **Insert** to open the menu. Check the status badge and `BepInEx/LogOutput.log` for startup errors.
+2. Download **BepInEx 6 Unity IL2CPP** from the [official BepInEx downloads](https://builds.bepinex.dev/projects/bepinex_be). This beta was compiled using **6.0.0-be.788**. Choose the Windows package matching your game executable: `Unity.IL2CPP-win-x64` for 64-bit or `Unity.IL2CPP-win-x86` for 32-bit. Do not choose Mono or BepInEx 5. This release targets the x64 setup listed above; other configurations are not verified.
+3. Extract the BepInEx archive into the game folder containing `Among Us.exe`. On Steam, right-click Among Us, then select **Manage → Browse local files**. If a compatible BepInEx setup is already installed, skip extracting another copy. See the [official IL2CPP installation guide](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html) for help.
+4. Launch the game once and let BepInEx generate its files. The first launch can take longer. Close the game afterward.
+5. Download `AU-Anticheat.dll` from [Releases](https://github.com/xav0dev/AU-Anticheat/releases) and place it in the game's `BepInEx/plugins` folder.
+6. Keep only one active copy of AU-Anticheat. Avoid other overlapping anti-cheat plugins.
+7. Start the game and press **Insert** to open the menu. Check the status badge and `BepInEx/LogOutput.log` for startup errors.
 8. Test normal gameplay with consenting players in a private lobby before relying on the beta.
 
-Do not put source files, tests, reference projects or the entire source ZIP into the plugins folder. If you have no compatible BepInEx installation yet, set that up first; this download contains the plugin, not the loader.
+Do not put source files, tests, reference projects or the entire source ZIP into the plugins folder. The AU-Anticheat download contains the plugin, not BepInEx or the game.
+
+## Updating
+
+1. Close Among Us and check that the new release supports your game and BepInEx versions.
+2. Back up your current anti-cheat DLL **outside** `BepInEx/plugins`.
+3. Back up and preserve `BepInEx/config/com.au.anticheat.cfg` and `BepInEx/config/AU-Anticheat/` to keep your settings and saved lists. Keep any older configuration files too; supported configuration migration runs automatically.
+4. Download the new `AU-Anticheat.dll` from [Releases](https://github.com/xav0dev/AU-Anticheat/releases).
+5. Replace the old DLL in `BepInEx/plugins`. Remove any duplicate or differently named older copies from that folder so only one version loads.
+6. Launch the game, press **Insert**, and check your settings and startup log. Test in a private lobby before using the update publicly.
+
+You do not need to reinstall BepInEx for every plugin update. Change it only when the release requirements call for a different compatible version.
 
 ## Using the menu
 
@@ -65,7 +76,7 @@ The assembly/display name is `AU-Anticheat`, the C# namespace is `AUAnticheat`, 
 
 ## Credits and license
 
-AU-Anticheat, previously named xav-anticheat, is based on **[Hydra by MrDiamond64](https://github.com/MrDiamond64/Hydra)**. Hydra is licensed under **GPL-3.0**; this fork retains that license. The full license is in [LICENSE](LICENSE). Renaming the project does not remove its original attribution.
+AU-Anticheat is based on **[Hydra by MrDiamond64](https://github.com/MrDiamond64/Hydra)**. Hydra is licensed under **GPL-3.0**; this fork retains that license. The full license is in [LICENSE](LICENSE). Renaming the project does not remove its original attribution.
 
 This fork preserves and hardens Hydra's anti-cheat and defensive message-validation work. Its build allowlist excludes upstream trolling, teleportation tools, role manipulation, immortality, device/version spoofing, sanction bypass and non-host forced-kick implementations. Defensive movement guards are distinct from teleportation cheat tools.
 
