@@ -1,0 +1,25 @@
+# Build output and generated game references
+**/bin/
+**/obj/
+*.dll
+*.pdb
+*.zip
+GameAssembly.*
+Assembly-CSharp.*
+BepInEx/
+Among Us_Data/
+
+# Local IDE and personal/runtime data
+.vs/
+.idea/
+*.user
+*.suo
+*.log
+*.cfg
+.env
+.env.*
+settings.json
+moderation-lists.json
+lobby-loadouts.json
+lobby-rules.txt
+logs/

@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net6.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../source/anticheat/ModerationStore.cs" Link="ModerationStore.cs" />
+    <Compile Include="../source/anticheat/ChatContentRules.cs" Link="ChatContentRules.cs" />
+    <Compile Include="../source/anticheat/ChatModeration.cs" Link="ChatModeration.cs" />
+    <Compile Include="../source/anticheat/RemovalRequestGuard.cs" Link="RemovalRequestGuard.cs" />
+    <Compile Include="../source/anticheat/LobbyIdleMonitor.cs" Link="LobbyIdleMonitor.cs" />
+    <Compile Include="../source/anticheat/LoadoutStore.cs" Link="LoadoutStore.cs" />
+    <Compile Include="../source/anticheat/LobbyLoadouts.cs" Link="LobbyLoadouts.cs" />
+    <Compile Include="../source/anticheat/LobbyRules.cs" Link="LobbyRules.cs" />
+    <Compile Include="../source/anticheat/FriendCodeExceptions.cs" Link="FriendCodeExceptions.cs" />
+    <Compile Include="../source/anticheat/LobbyAdmissionRules.cs" Link="LobbyAdmissionRules.cs" />
+    <Compile Include="../source/anticheat/LobbyLevelPolicy.cs" Link="LobbyLevelPolicy.cs" />
+    <Compile Include="../source/anticheat/PublicText.cs" Link="PublicText.cs" />
+    <Compile Include="../source/anticheat/LobbyChat.cs" Link="LobbyChat.cs" />
+    <Compile Include="../source/anticheat/LobbyExtension.cs" Link="LobbyExtension.cs" />
+    <Compile Include="../source/anticheat/ActivityTracker.cs" Link="ActivityTracker.cs" />
+    <Compile Include="../source/anticheat/RoundLedger.cs" Link="RoundLedger.cs" />
+    <Compile Include="../source/anticheat/RoundReports.cs" Link="RoundReports.cs" />
+    <Compile Include="../source/anticheat/MeetingResultRules.cs" Link="MeetingResultRules.cs" />
+    <Compile Include="../source/anticheat/MeetingProtection.cs" Link="MeetingProtection.cs" />
+  </ItemGroup>
+</Project>
