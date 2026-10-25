@@ -1,0 +1,71 @@
+AU-Anticheat 1.0.0-beta.2 / numeric 0.9.0.2
+Prepared 25 October 2026. Experimental release candidate.
+
+Production Release: compiled against installed v19s/build 7489 x64 game
+interop and BepInEx Unity IL2CPP build 788. Zero compiler warnings/errors.
+No native game session was started or modified during release preparation.
+
+Automated checks run against this revision:
+  95,556 protection/parser/metadata assertions (25,000 seeded malformed inputs)
+     553 UI/settings/wardrobe-store assertions with managed Unity doubles
+     773 lobby/chat/meeting/moderation/wardrobe/gameplay/device assertions
+     105 role/teleport adapter assertions with managed doubles
+      37 movement/geometry/proximity assertions with simulated geometry
+      18 report-service template assertions with mocked Google APIs
+      29 approval-sync assertions with mocked Google Sheets/edit events
+  97,071 total assertions
+
+Some test doubles emit unused-field warnings. These are not live Unity,
+physics, multiplayer, real-server attribution, removal delivery or service tests.
+The ordinary service test makes no external requests or player records.
+Prior live verification (24 October; not repeated for this build): production HTTP adapter downloaded the public Google
+CSV successfully (0 active entries), received accepted=true for a synthetic test
+report, and the matching pending row was verified in the private inbox UI.
+The Sheet remained private to the owner. That row was marked SELF-TEST ONLY and
+test-only after verification. No real player was reported or public ban added.
+The owner authorized and deployed the reporting service through Google's UI.
+
+Approval automation update: owner decisions of approved can publish a validated
+friend code with a fixed public moderation reason and no expiry. Pending/rejected
+reports add nothing. Tests cover duplicate deliveries, existing bans/watch rows,
+expired entries, wrong events, invalid data/formulas, bad schema, lock contention
+and synthetic test-record rejection. The service files are preserved; this release also includes a newly rebuilt plugin DLL.
+
+Changes checked in this revision:
+  - Self page; indented Lobby Settings page; nested entry exceptions;
+    renamed rules/preset editors and persisted independent response defaults.
+  - Link and SNS/Expert/mod-lobby code filtering; default local hide only.
+    Official-server relay still prevents a guarantee of hiding from everyone.
+  - Preferred wardrobe color, leftward occupied-color fallback, five-second
+    restore requests and cancellation after manual wardrobe color selection.
+  - AFK action cancelled after activity; proximity eligibility cancelled after
+    separation, death or a changed lobby. Neither is cheating proof.
+  - Host-only modded task counts, task filters including MedBay scan,
+    selected console restrictions, sabotage and decontamination controls.
+  - Device tests cover enter/leave, no repeated sends, real-comms precedence,
+    vent/meeting cleanup, unknown systems, two-console maps and guest authority.
+  - Game metadata checked for the new Harmony target signatures.
+
+Required before calling this fully tested:
+  - Complete the private multiplayer checklist in DOCUMENTATION.md.
+  - Validate x86 startup against x86-generated game interop.
+  - Test custom modded settings with another consenting client.
+  - Test report preview/submission inside native Unity (HTTP/inbox check passed).
+  - Review the hidden-stamp publication conflict in POLICY.md.
+
+Intentionally not claimed/implemented:
+  - Universal original-sender authentication on official servers.
+  - Role secrecy from software running on a receiving player's client.
+  - Guaranteed lobby-wide prevention/reversal of all hacks/removal attacks.
+  - DDoS protection or hiding everyone's IP.
+  - Automatic global bans from unreviewed online reports.
+
+Packaging requirements:
+  - Official architecture-matched loader files, unmodified.
+  - Same built plugin DLL in standalone/x64/x86 packages.
+  - No tests, source, logs, personal config, game binaries or generated interop
+    in installation packages.
+  - Separate source and self-contained developer test archives.
+  - No game installation, upload or GitHub publication performed.
+
+See SHA256SUMS.txt beside the downloads for final artifact hashes.
