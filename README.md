@@ -1,87 +1,88 @@
-# <img src="assets/au-anticheat-x.svg" width="32" height="36" alt="AU-Anticheat X badge"> AU-Anticheat — beta 1
+# <img src="assets/au-anticheat-x.svg" width="32" height="36" alt="X badge"> AU-Anticheat — Beta 2
 
-**By xav0dev - Boo.** A defensive Among Us anti-cheat and lobby-moderation plugin for BepInEx IL2CPP.
+**by xav0dev - Boo** · **1.0.0-beta.2** · Windows / BepInEx IL2CPP
 
-AU-Anticheat checks supported game messages, provides local protection and alerts, and gives hosts normal moderation tools. It keeps normal gameplay in mind, including vents, meetings, role changes after death and delayed network updates.
+Defensive message checks, understandable alerts and host moderation for Among Us. Includes personal chat filtering for links and lobby promotions, saved rules, match summaries, entry-level exceptions, persistent local bans, optional community-list lookup and configurable lobby automation.
 
-**Experimental beta:** automated checks have passed, but live multiplayer testing is still required. It cannot guarantee a cheat-free lobby or protection against every removal attack. This project is not affiliated with or endorsed by Innersloth.
+**Experimental release candidate:** automated checks passed; live multiplayer and x86 native startup still need testing. It cannot guarantee a cheat-free lobby, identify every sender, stop every removal attack or protect everyone's IP. Not affiliated with or endorsed by Innersloth.
 
-## Download
+**Important default:** referenced-owner punishment is ON, following the requested HostGuard-style approach. The referenced object's owner is not necessarily the sender. Forged actions can cause innocent players to be banned; persistent saving is also ON. Turn off **Detection → Use referenced-owner punishment (spoofable)** for observation-only attribution and review saved bans.
 
-Look under [Releases](https://github.com/xav0dev/AU-Anticheat/releases) for the beta 1 download when available. Players need **AU-Anticheat.dll**, not the source or test folders. GitHub's automatic “Source code” downloads do not contain the compiled plugin.
+## Downloads
 
-Version: **1.0.0-beta.1**. The numeric loader/file version is **0.9.0.1**; that is expected.
+Available from [Releases](https://github.com/xav0dev/AU-Anticheat/releases) after the maintainer publishes this candidate:
+
+| File | Purpose |
+| --- | --- |
+| `AU-Anticheat.dll` | Update an existing compatible installation. |
+| `AU-Anticheat-1.0.0-beta.2-Install-x64.zip` | Fresh 64-bit installation: official BepInEx loader plus plugin. |
+| `AU-Anticheat-1.0.0-beta.2-Install-x86-UNVERIFIED.zip` | 32-bit candidate, not validated against a 32-bit game or tested natively. |
+| `AU-Anticheat-1.0.0-beta.2-Source.zip` | Corresponding plugin source, docs and optional service template. |
+| `AU-Anticheat-1.0.0-beta.2-Tests.zip` | Developer tests and matching source; not for installation. |
+
+Installation ZIPs contain **no tests, generated game libraries, player records or personal configuration**. Numeric DLL/loader version: `0.9.0.2`; displayed version: `1.0.0-beta.2`.
 
 ## Requirements
 
-- Among Us on Windows with a compatible x64 BepInEx IL2CPP installation.
-- This build was compiled against Among Us **v19s / build 7489**, using BepInEx **6.0.0-be.788** interop libraries. Compatibility with other game or loader versions is not guaranteed.
-- Other players do not need this plugin for ordinary gameplay. That does not mean your installation protects all of their clients.
+Compiled and metadata-checked against the installed **Among Us v19s / build 7489 x64** interop and **BepInEx 6.0.0-be.788+5b766a3**. Other updates/loaders are not guaranteed compatible. AnyCPU managed code does not by itself prove x86 native compatibility.
 
-The plugin is a Windows build. Checking messages from Android or console players does not make the DLL installable on those devices. Game and BepInEx libraries are not bundled.
+Choose by the **game executable's architecture**, not Windows architecture. Never mix x86/x64 loaders. This Windows plugin cannot be installed on Android, iOS or consoles. Other players do not need it for ordinary defensive-mode gameplay; your client does not control their clients.
 
 ## Installation
 
-1. Close Among Us.
-2. Download **BepInEx 6 Unity IL2CPP** from the [official BepInEx downloads](https://builds.bepinex.dev/projects/bepinex_be). This beta was compiled using **6.0.0-be.788**. Choose the Windows package matching your game executable: `Unity.IL2CPP-win-x64` for 64-bit or `Unity.IL2CPP-win-x86` for 32-bit. Do not choose Mono or BepInEx 5. This release targets the x64 setup listed above; other configurations are not verified.
-3. Extract the BepInEx archive into the game folder containing `Among Us.exe`. On Steam, right-click Among Us, then select **Manage → Browse local files**. If a compatible BepInEx setup is already installed, skip extracting another copy. See the [official IL2CPP installation guide](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html) for help.
-4. Launch the game once and let BepInEx generate its files. The first launch can take longer. Close the game afterward.
-5. Download `AU-Anticheat.dll` from [Releases](https://github.com/xav0dev/AU-Anticheat/releases) and place it in the game's `BepInEx/plugins` folder.
-6. Keep only one active copy of AU-Anticheat. Avoid other overlapping anti-cheat plugins.
-7. Start the game and press **Insert** to open the menu. Check the status badge and `BepInEx/LogOutput.log` for startup errors.
-8. Test normal gameplay with consenting players in a private lobby before relying on the beta.
+1. Close Among Us. Use a clean game folder or separate backup for beta testing.
+2. Choose the matching installation ZIP. Extract its **contents** beside `Among Us.exe`, not into `BepInEx/plugins`. It contains official loader build 788 and `BepInEx/plugins/AU-Anticheat/AU-Anticheat.dll`.
+3. Do not blindly overwrite a different loader installation. If compatible BepInEx already works, use the DLL-only update below.
+4. Launch and allow first-run BepInEx generation/downloads to finish. First launch is not guaranteed to work offline.
+5. Press **Insert**. Check the badge and `BepInEx/LogOutput.log`; inactive status/errors mean protection did not attach successfully.
+6. Test normal gameplay with consenting players privately before using the beta publicly.
 
-Do not put source files, tests, reference projects or the entire source ZIP into the plugins folder. The AU-Anticheat download contains the plugin, not BepInEx or the game.
+For manual installation use [official BepInEx downloads](https://builds.bepinex.dev/projects/bepinex_be) and the [Unity IL2CPP guide](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html). Choose `Unity.IL2CPP-win-x64` or `Unity.IL2CPP-win-x86`, **not Mono or BepInEx 5**, then put the DLL in `BepInEx/plugins/AU-Anticheat/`.
 
 ## Updating
 
-1. Close Among Us and check that the new release supports your game and BepInEx versions.
-2. Back up your current anti-cheat DLL **outside** `BepInEx/plugins`.
-3. Back up and preserve `BepInEx/config/com.au.anticheat.cfg` and `BepInEx/config/AU-Anticheat/` to keep your settings and saved lists. Keep any older configuration files too; supported configuration migration runs automatically.
-4. Download the new `AU-Anticheat.dll` from [Releases](https://github.com/xav0dev/AU-Anticheat/releases).
-5. Replace the old DLL in `BepInEx/plugins`. Remove any duplicate or differently named older copies from that folder so only one version loads.
-6. Launch the game, press **Insert**, and check your settings and startup log. Test in a private lobby before using the update publicly.
+1. Close the game and check release compatibility.
+2. Back up the old DLL **outside** `BepInEx/plugins`.
+3. Preserve `BepInEx/config/com.au.anticheat.cfg` and `BepInEx/config/AU-Anticheat/` for preferences, rules, lists and loadouts.
+4. Replace the old DLL. Keep **one** active copy, including checking differently named older copies and subfolders.
+5. Restart, review the settings, and test privately. Reinstall BepInEx only when release requirements call for it.
 
-You do not need to reinstall BepInEx for every plugin update. Change it only when the release requirements call for a different compatible version.
+Nothing was automatically installed or published while preparing these files.
 
-## Using the menu
+## Menu
 
-Press **Insert** to open or close it, **Escape** to close, or use its X button. Drag the top bar to move it and scroll inside the content panel.
+**Insert** opens/closes; **Escape** closes. Change the key in **Settings → Choose menu key**. Drag the title bar. The transparent red theme and X status badge are retained.
 
-- **Overview:** status and getting started.
-- **Lobby:** entry levels, exceptions, saved rules, match summaries, loadouts and local chat moderation.
-- **Alerts:** notification history and suspicious-action review.
-- **Players:** color-coded player list, reported details and host moderation.
-- **Protection:** covered packet, movement and removal safeguards.
-- **Detection:** checks, evidence threshold and host response.
-- **Settings:** saving, reset, appearance, session clearing and unload.
+- **Overview:** status and guidance.
+- **Self:** saved outfits with preferred-color restoration, personal chat filters and automatic lobby return.
+- **Lobby:** entry level rule with friend-code exceptions, editable auto-post rules, saved lobby settings, moderation and automation.
+- **Lobby → Settings:** typed extended values, task counts/filters (including MedBay scan), device restrictions, sabotage and decontamination options for explicit modded host mode.
+- **Alerts:** current-lobby history and optional technical detail.
+- **Players:** game-color names, reported details, local lists and normal host moderation.
+- **Protection:** supported packet, movement and removal guards.
+- **Detection:** points, Alert / Kick / Ban / Persistent Ban response. Persistent Ban is the default anti-cheat response.
+- **Settings:** key, appearance, persistence, reset and unload.
 
-Read [Documentation.md](Documentation.md) for every feature, its settings and its limits.
+[DOCUMENTATION.md](DOCUMENTATION.md) explains every feature, Google setup and testing. [POLICY.md](POLICY.md) covers privacy/publication limitations; [LICENSES.md](LICENSES.md) lists bundled components.
 
-## Troubleshooting and removal
+## Troubleshooting
 
-- **INACTIVE or startup errors:** protections did not attach. Check game/loader compatibility and duplicate plugins. Do not assume the badge means all guards are working.
-- **False detections or broken normal actions:** stop relying on that check, note the action and settings, and preserve the affected log. Restore your backed-up DLL if necessary.
-- **Settings do not save:** check the in-menu save status and write access to the configuration folder.
-- **Rules or results do not post:** check host authority, message length, lobby readiness and the shared chat cooldown. See the documentation before treating this as a failure.
-- **Uninstall:** close the game and remove only `AU-Anticheat.dll` from `BepInEx/plugins`. Keep the configuration folder if you want your preferences for a later reinstall.
+- **Blank panel/inactive:** check compatibility, duplicate plugins and startup errors; use the panel retry button. A badge is not a protection certification.
+- **False detections:** disable owner punishment, review Alerts and preserve a redacted log. Lower thresholds increase false-removal risk.
+- **No rules/results:** check host authority, readiness, 100-character cap and your own chat cooldown. Results wait five continuously ready seconds after returning.
+- **Reports unavailable:** choose **Lobby → Local moderation and chat filters → Use AU-Anticheat review service**, then review/submit from Players. Existing blank endpoints remain disabled. Reports enter the private inbox as pending; only an explicit approved decision by its owner can publish a ban through the approval automation. Service quotas/availability can prevent delivery or synchronization; check its status.
+- **Uninstall:** close the game and remove the plugin DLL. Keep configuration if wanted. Removing BepInEx also affects other mods.
 
-For a bug report, include game build, plugin version, host/non-host status and a short normal-gameplay reproduction. Redact personal information, friend/account IDs, IP addresses and lobby codes from logs or screenshots. Do not publish working crash/removal exploits or test them against public players.
-
-## For developers
-
-The repository contains the readable plugin source and separate regression-test folders. Tests are not built into the plugin and players do not need to install them. Build instructions, test scope and verification results are in [Documentation.md](Documentation.md#building-and-testing).
-
-The assembly/display name is `AU-Anticheat`, the C# namespace is `AUAnticheat`, the entry point is `AUAnticheatPlugin`, and the plugin ID is `com.au.anticheat`. C# identifiers cannot contain hyphens. Historical names remain only in attribution, upgrade guidance, the previous-config lookup and rename-verification tests. Author credits are not project branding.
+For bugs include game/plugin versions, host/guest status and a normal-play reproduction. Redact friend/account IDs, IPs, lobby codes and private data. Never test attacks on public players.
 
 ## Credits and license
 
-AU-Anticheat is based on **[Hydra by MrDiamond64](https://github.com/MrDiamond64/Hydra)**. Hydra is licensed under **GPL-3.0**; this fork retains that license. The full license is in [LICENSE](LICENSE). Renaming the project does not remove its original attribution.
+Based on **[Hydra by MrDiamond64](https://github.com/MrDiamond64/Hydra)** under **GPL-3.0**. Required upstream attribution and [LICENSE](LICENSE) remain. The fork excludes upstream trolling, device spoofing, sanction bypass and non-host forced-removal utilities from its build.
 
-This fork preserves and hardens Hydra's anti-cheat and defensive message-validation work. Its build allowlist excludes upstream trolling, teleportation tools, role manipulation, immortality, device/version spoofing, sanction bypass and non-host forced-kick implementations. Defensive movement guards are distinct from teleportation cheat tools.
+Selected classic gameplay controls were independently implemented after reviewing [AmongUsRevamped](https://github.com/ApeMV/AmongUsRevamped). Its GPL-3.0 DevicePatches informed targeted communications disruption near disabled consoles. This does not include its custom gamemodes or promise to block modified clients.
 
-AU-Anticheat's additional work includes lobby-scoped evidence handling, message-rate checks, clearer authority boundaries, defensive moderation, local privacy controls, saved preferences and host-authorized lobby admission policies.
+Targeted reviews of [BanMod](https://github.com/GiannBart/BanMod), [HostGuard](https://github.com/RaresHonour/HostGuard), Town of Host/Enhanced, BetterAmongUs, Impostor and other public material informed selected designs. BanMod informed summary timing/layout and host-mode separation; HostGuard-style ownership remains spoofable. This is not an audit of every menu or an endorsement; no private services/credentials or cheat binaries are bundled.
 
-Public material from BanMod, Town of Host, Town of Host Enhanced, BetterAmongUs, Impostor, Grim and other projects informed targeted design reviews. Their implementations, assets, endpoints, private services and community ban lists were not bundled by those additions. The scope and source links are in [Documentation.md](Documentation.md#reference-review). No claim is made to have audited every menu or anti-cheat. An MIT notice on an unrelated component does not relicense this Hydra-derived fork.
+HostGuard's default-name word-pair detector is adapted under its MIT license, copyright (c) 2026 Rares; see [the retained notice](licenses/HostGuard-MIT.txt). Its three configured bot-name examples are bundled with optional name filtering. Matching these names is a moderation preference, not proof of cheating.
 
-Among Us belongs to Innersloth. AU-Anticheat is an independent community project, not an official Innersloth product.
+Installation packages include official **BepInEx** and dependencies under their respective licenses. Among Us and original assets belong to **Innersloth**. The plugin uses a loaded game font when available; its X badge is not an official certification mark.
