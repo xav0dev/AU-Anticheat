@@ -23,3 +23,13 @@ moderation-lists.json
 lobby-loadouts.json
 lobby-rules.txt
 logs/
+
+# Personal saved outfits
+wardrobe.json
+
+# Personal moderation lists and filters
+moderation-list.json
+filtered-words.txt
+filtered-names.txt
+bot-names.txt
+default-names.txt
