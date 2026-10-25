@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Disarm</id>
+    <version>2022.1.0-master.57+c25313c</version>
+    <title>Disarm</title>
+    <authors>Sam Byass (Samboy063)</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/SamboyCoding/Disarm</projectUrl>
+    <description>Pure-C# Disassembler for the ARM64 Instruction Set</description>
+    <copyright>Copyright © Samboy063 2022</copyright>
+    <repository type="git" url="https://github.com/SamboyCoding/Disarm.git" commit="c25313c438ad4f3b3c7284128368504f98b5686d" />
+    <dependencies>
+      <group targetFramework="net6.0" />
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Memory" version="4.5.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

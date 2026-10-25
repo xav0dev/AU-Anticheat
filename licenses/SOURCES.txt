@@ -1,0 +1,29 @@
+Unmodified official loader: BepInEx Unity IL2CPP Windows build 788, 5b766a3.
+https://builds.bepinex.dev/projects/bepinex_be/788
+https://github.com/BepInEx/BepInEx/tree/5b766a3
+https://github.com/NeighTools/UnityDoorstop/tree/v4.5.0
+https://github.com/BepInEx/Il2CppInterop/tree/v1.5.3
+https://github.com/dotnet/runtime/tree/0ec02c8c96e2eda06dc5b5edfdbdba0f36415082
+
+Additional dependency source references:
+https://github.com/Washi1337/AsmResolver/tree/f70da7936c203b4ecfb19c9ad71d08c6eb4b5bd3
+https://github.com/ds5678/Capstone.NET/tree/b90e380c14e857865c94a355954236e678bd557c
+https://github.com/icedland/iced/tree/601c40570d6c986c8e1a6a2e483dd2fdf5ade552
+https://github.com/BepInEx/HarmonyX/tree/v2.10.2
+https://github.com/jbevain/cecil/tree/0.11.4
+https://github.com/MonoMod/MonoMod/tree/v22.07.31.01
+https://github.com/MonoMod/MonoMod
+https://github.com/AssetRipper/AssetRipper.CIL
+https://github.com/AssetRipper/AssetRipper.Primitives
+https://github.com/SamboyCoding/Cpp2IL
+https://github.com/SamboyCoding/Disarm
+https://github.com/adamreeve/semver.net
+https://github.com/jmpews/Dobby
+
+Cpp2IL's license also covers its LibCpp2IL, StableNameDotNet and
+WasmDisassembler components. MonoMod's notices cover its bundled
+RuntimeDetour/Utils and helper components.
+Some additional notices were retrieved from upstream's current default branch,
+not a verified reconstruction of the entire loader's transitive source tree.
+Preserve upstream metadata/changelog and review redistribution requirements
+before public release. No loader file was patched by AU-Anticheat packaging.
